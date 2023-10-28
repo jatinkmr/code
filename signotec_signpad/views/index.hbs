@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #signatureCanvas {
+            border: 1px solid black;
+        }
+    </style>
+    {{!-- <script src="/socket.io/socket.io.js"></script> --}}
+    {{!-- <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script> --}}
+    <script>
+        console.log('hello from index.hbs')
+
+        {{!-- let socket = io();
+
+        socket.on('connect', () => {
+            console.log('connected' + socket.id);
+        }); --}}
+    </script>
+</head>
+<body>
+    <div>
+        Welcome to home for Signature
+    </div>
+
+    <br />
+
+    <canvas id="signatureCanvas" width="1000" height="400"></canvas>
+</body>
+</html>

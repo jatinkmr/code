@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Signature Canvas</title>
+</head>
+
+<body>
+
+    <canvas id="signatureCanvas" width="10000" height="5000"></canvas>
+    <style>
+        #signatureCanvas {
+            border: 1px solid #000000;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        function drawStrokeStartPoint(canvasContext, softCoordX, softCoordY) {
+            // open new stroke's path
+            console.log(`Drawing at x = ${softCoordX}, y = ${softCoordY}`);
+            canvasContext.beginPath();
+            canvasContext.arc(softCoordX, softCoordY, 0.1, 0, 2 * Math.PI, true);
+            canvasContext.fill();
+            canvasContext.stroke();
+            canvasContext.moveTo(softCoordX, softCoordY);
+        }
+        function drawStrokePoint(canvasContext, softCoordX, softCoordY) {
+            // continue after start or not start point
+            console.log(`Drawing at x = ${softCoordX}, y = ${softCoordY}`);
+            canvasContext.lineTo(softCoordX, softCoordY);
+            canvasContext.stroke();
+        }
+        const socket = io();
+        var scaleFactorX = 1.0;
+        var scaleFactorY = 1.0;
+        var canvas = document.getElementById('signatureCanvas');
+        var ctx = canvas.getContext('2d');
+        //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // canvas.width = 400;
+        // canvas.height = 200;
+        ctx.fillStyle = "#fff";
+        ctx.lineWidth = 4.5;
+        //ctx.lineCap = "round";
+        ctx.strokeStyle = "#FF0000";
+        // WebSocket server URL
+
+        socket.on('signaturePoint', (data) => {
+            const x = data.x;
+            const y = data.y;
+            const p = data.p;
+            if (p === 0) {
+                drawStrokeStartPoint(ctx, x * scaleFactorX, y * scaleFactorY);
+            }
+            else {
+                drawStrokePoint(ctx, x * scaleFactorX, y * scaleFactorY);
+            }
+
+            // Log the received signature point to the browser console
+            console.log(`Received: x = ${x}, y = ${y}, p = ${p}`);
+        });
+        socket.on('clearCanvas', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+
+
+    </script>
+</body>
+
+</html>
