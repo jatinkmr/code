@@ -26,7 +26,8 @@ async function scanForADAMDevices() {
 
             try {
                 client.setID(1)
-                client.setTimeout(timeout)
+                client.setTimeout(timeout) // set timeout, if we did not get any reply
+
                 await client.connectTCP(ipAddress, { port: 502 })  // default Modbus TCP port is 502
 
                 const data = await client.readHoldingRegisters(0, 1)
@@ -93,5 +94,5 @@ async function scanForADAMDevices() {
     process.exit()
 }
 
-// Run the scan
+// Run the scan using the below given function
 scanForADAMDevices()

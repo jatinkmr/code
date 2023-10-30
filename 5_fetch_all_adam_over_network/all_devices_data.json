@@ -7,9 +7,11 @@
   },
   {
     "ipAddress": "192.168.0.206",
-    "registerValue": "N/A",
-    "holdingRegisterValue": "N/A",
-    "error": "Unable to connect with Device due to not found or other issue...Error: TCP Connection Timed Out"
+    "registerValue": "{\"data\":[0],\"buffer\":{\"type\":\"Buffer\",\"data\":[0,0]}}",
+    "holdingRegisterValue": [
+      0
+    ],
+    "error": "N/A"
   },
   {
     "ipAddress": "192.168.0.207",

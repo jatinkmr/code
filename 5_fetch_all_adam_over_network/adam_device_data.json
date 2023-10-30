@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "ipAddress": "192.168.0.206",
+    "registerValue": "{\"data\":[0],\"buffer\":{\"type\":\"Buffer\",\"data\":[0,0]}}",
+    "holdingRegisterValue": [
+      0
+    ],
+    "error": "N/A"
+  }
+]
