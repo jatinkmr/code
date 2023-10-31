@@ -3,7 +3,16 @@
 const ModbusRTU = require('modbus-serial')
 const client = new ModbusRTU()
 
-client.connectTCP("192.168.0.206", { port: 502 }, () => console.log('ADAM Device Connected at 192.168.0.206...!!'))
+// node(0 index) <fileName>.js(1 index) arg_1(2 index) arg_2(3 index)...and so on currently we're using "192.168.0.206"
+const args = process.argv; // taking arguments while running the system
+if (args && !args[2]) {
+    console.log('Please Enter the IP Address to connect...')
+    process.exit(1)
+}
+
+let ipAddress = args[2]
+
+client.connectTCP(ipAddress, { port: 502 }, () => console.log('ADAM Device Connected at 192.168.0.206...!!'))
 client.setID(1)
 
 let inPutAddress = 0, buttonPressedTime = null, buttonReleasedTime = null
