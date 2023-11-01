@@ -12,7 +12,7 @@ if (args && !args[2]) {
 
 let ipAddress = args[2]
 
-client.connectTCP(ipAddress, { port: 502 }, () => console.log('ADAM Device Connected at 192.168.0.206...!!'))
+client.connectTCP(ipAddress, { port: 502 }, () => console.log(`ADAM device connected at given port ${ipAddress}`))
 client.setID(1)
 
 let inPutAddress = 0, buttonPressedTime = null, buttonReleasedTime = null
