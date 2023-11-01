@@ -1,0 +1,21 @@
+{
+  "name": "6_connect_multiple_adams",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connect_multiple_adams_for_inputoutput.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "modbus-serial": "^8.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
