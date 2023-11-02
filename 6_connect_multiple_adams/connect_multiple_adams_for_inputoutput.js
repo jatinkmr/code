@@ -5,11 +5,15 @@ const client2 = new ModbusRTU()
 
 async function connectAndSetID(client, ip, port, id) {
     return new Promise((resolve, reject) => {
-        client.connectTCP(ip, { port }, () => {
-            console.log(`connecting ADAM device at ${ip}`)
-            console.log(`ADAM device connected at port ${ip}`)
-            client.setID(id)
-            resolve()
+        client.connectTCP(ip, { port }, (err) => {
+            if (err) {
+                reject(err)
+            } else {
+                console.log(`connecting ADAM device at ${ip}`)
+                console.log(`ADAM device connected at port ${ip}`)
+                client.setID(id)
+                resolve()
+            }
         })
     })
 }
@@ -24,8 +28,8 @@ async function connectingBothAdams() {
 
         return 'SuccesS'
     } catch (error) {
-        console.log('facing an error while making connection with Both Adam(s) :- ', error)
-        process.exit(1)
+        console.log('facing an error while making connection with Adam(s) :- ', error)
+        process.exit()
     }
 }
 
