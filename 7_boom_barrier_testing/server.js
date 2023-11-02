@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
 
 app.post('/api/handleboom', async function (req, res) {
     try {
-        // taking Boolean value for handling the boomBarrier
+        // taking Boolean value for handling the boomBarrier open/close request
         const { boomBarrierValue } = req.body
         console.log(`boomBarrierValue: ${boomBarrierValue}`)
 

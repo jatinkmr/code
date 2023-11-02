@@ -1,0 +1,8 @@
+1) nodemon
+2) express
+3) body-parser
+4) express-handlebars
+5) socket.io // for signoPad
+6) ws (webSocket) // for signoPad
+7) modbus-serial // for connecting over TCP and UDP Protocols
+8) node-hid // for connecting the bar-code-scanner
