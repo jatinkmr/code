@@ -19,12 +19,7 @@ app.post('/api/handleboom', async function (req, res) {
         if ((boomBarrierValue === true) || (boomBarrierValue === false)) {
             console.log(`correct :- boomBarrierValue: ${boomBarrierValue}`)
 
-            let operationFunctionality = null
-            if (boomBarrierValue) {
-                operationFunctionality = "Open"
-            } else {
-                operationFunctionality = "Close"
-            }
+            let operationFunctionality = boomBarrierValue ? "Open" : "Close"
 
             const response = await Client.writeCoil(16, boomBarrierValue)
 
