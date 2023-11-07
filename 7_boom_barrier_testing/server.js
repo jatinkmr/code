@@ -32,13 +32,13 @@ app.post('/api/handleboom', async function (req, res) {
         } else {
             return res.status(200).json({
                 error: true,
-                message: 'boomBarrierValue is invalid. Please try again with a correct value.'
+                message: 'Incorrect request. Please provide a valid boolean value (true or false) for handling the boom barrier open/close request.'
             })
         }
     } catch (error) {
         res.status(500).json({
             error: true,
-            message: `Unable to handle the Boom Barrier. Error :- ${error}`
+            message: `Server Error. Please try again later. Error :- ${error}`
         })
     }
 })
