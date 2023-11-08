@@ -6,11 +6,11 @@ const Client = require('./modbus')
 
 app.use(bodyParser.json())
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.status(200).send('Welcome to Home')
 })
 
-// handle boom-barrier using single button opening and closing the barrier
+// handle boom-barrier using single button opening and closing the barrier using ui and using same outPutAddress to handle those operation(s)
 app.post('/api/handleboom', async function (req, res) {
     try {
         // taking Boolean value for handling the boomBarrier open/close request
@@ -73,6 +73,39 @@ app.post('/api/handlemul-boom', async function (req, res) {
         return res.status(500).json({
             error: true,
             message: 'Incorrect request. Please provide correct data to handle boom-barrier.'
+        })
+    }
+})
+
+// handle boom-barrier using radio button(s) over the UI for opening and closing the barier & sending outPut from different outPutAddress(s)
+app.post('/api/handleboom-ui', async function (req, res) {
+    try {
+        const { boomBarrierValue } = req.body
+        let openingOutPutAddress = 16, closingOutPutAddress = 17 // if in case we've to handle separate output address for both functionality
+
+        if ((boomBarrierValue === true) || (boomBarrierValue === false)) {
+            let operationFunctionality = boomBarrierValue ? "Open" : "Close"
+
+            if (openingValue) {
+                await Client.writeCoil(openingOutPutAddress, true) // sending opening pulse to 16 index
+            } else if (closingValue) {
+                await Client.writeCoil(closingOutPutAddress, true) // sending closing pulse to 17 index
+            }
+
+            return res.status(200).json({
+                error: false,
+                message: `${operationFunctionality} Operation Succesfully Completed`
+            })
+        } else {
+            return res.status(200).json({
+                error: true,
+                message: "Invalid value provided for opening."
+            })
+        }
+    } catch (error) {
+        return res.status(500).json({
+            error: true,
+            message: `Incorrect request. Please provide correct data to handle boom-barrier. Error:- ${error}`
         })
     }
 })
