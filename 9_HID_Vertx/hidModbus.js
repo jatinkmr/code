@@ -3,11 +3,13 @@ const ModBusSerial = require("modbus-serial")
 // Create a Modbus client instance
 const client = new ModBusSerial()
 
+// Ports 4050 (PC to VertX/Edge) and 4070 (VertX/Edge to PC) 
 const config = {
     host: "192.168.0.204",
     port: 4050
 }
 
+// vertx evo v1000 and vertx v100 gateway
 // connection_port (4070) TCP outbound. This port must be open on the Host computer.
 // listen_port (4050) TCP incoming. This port must be open when using selected applications. 
 client.connectTCP(config.host, { port: config.port }, (err) => { // --> ip for Vertx controller
