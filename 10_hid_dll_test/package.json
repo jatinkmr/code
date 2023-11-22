@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ffi-napi": "^4.0.3"
+    "ffi-napi": "^4.0.3",
+    "path": "^0.12.7"
   }
 }
