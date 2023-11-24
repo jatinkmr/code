@@ -9,7 +9,7 @@ const vertXLib = ffi.Library(vertXDefineLibPath, {
 	// <function_Name>: [<return data-type>, [<function_argument_1>, <function_argument_2>, ...]]
     Initialization: ['int', ['int', 'char', 'char']], // VEXPORT int CALLBACK Initialization(int port, HWND hWnd, HINSTANCE hInst)
     // for pointer we may provide int*, char*, or pointer
-    GetDLLVersion: ['int', ['char*', 'int']] // VEXPORT int CALLBACK GetDLLVersion(char *version, int versionSize)
+    GetDLLVersion: ['int', ['pointer', 'int']] // VEXPORT int CALLBACK GetDLLVersion(char *version, int versionSize)
 })
 
 module.exports = vertXLib
