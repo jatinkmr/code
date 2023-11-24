@@ -11,19 +11,37 @@ const hidVertXConnection = async ()  => {
             console.log('Unable to Connect with HID VertX DLL')
         }
     } catch (error) {
-        console.log('Error :- ', error)
+        console.log('Error in hidVertXConnection :- ', error)
     }
 }
 
-const fetchDllVersion = async (charArg1, intArg2) => {
+const fetchDllVersion = async (emptyBufferToStoreVersion, sizeOfEmptyBuffer) => {
     try {
-        let dllVersionOutPut = VertXLib.GetDLLVersion(charArg1, intArg2)
+        let dllVersionOutPut = VertXLib.GetDLLVersion(emptyBufferToStoreVersion, sizeOfEmptyBuffer)
     } catch(error) {
-        console.log('Error :- ', error)
+        console.log('Error in fetchDllVersion :- ', error)
+    }
+}
+
+const fetchValidHidControllerGateway = async (controllerMacAddress, controllerSize) => {
+    try {
+        return await VertXLib.GetValidControllers(controllerMacAddress, controllerSize)
+    } catch (error) {
+        console.log('Error in fetchValidHidController :- ', error)
+    }
+}
+
+const setValidHidControllerGateway = async (controllerMacAddress, controllerMacAddressSize) => {
+    try {
+        return await VertXLib.SetValidControllers(controllerMacAddress, controllerMacAddressSize)
+    } catch (error) {
+        console.log('Error in setValidHidControllerGateway :- ', error)
     }
 }
 
 module.exports = {
     hidVertXConnection,
-    fetchDllVersion
+    fetchDllVersion,
+    fetchValidHidControllerGateway,
+    setValidHidControllerGateway
 }
