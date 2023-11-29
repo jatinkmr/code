@@ -25,7 +25,17 @@ const vertXLib = ffi.Library(vertXDefineLibPath, {
     // GetConnectedGateways is a deprecated function, use GetConnectedControllers viz updated function
     // int GetConnectedGateways(char *data, int dataSize) 
     // VEXPORT int CALLBACK GetConnectedControllers(char *controllers,int controllersSize);
-    GetConnectedControllers: ['int', ['pointer', 'int']] // this function will return the list of V1000/V2000 controllers currently connected
+    GetConnectedControllers: ['int', ['pointer', 'int']], // this function will return the list of V1000/V2000 controllers currently connected
+
+    // ContactGateway is deprecated instead of this use ContactController
+    // VEXPORT int CALLBACK ContactGateway(char *ipHostName,int port);
+    // VEXPORT int CALLBACK ContactController(char *ipHostName,int port);
+    ContactController: ['int', ['pointer', 'int']], // this function use to make connection with HID Hardware Device using ipAddress and (4050)port
+
+    // GatewayInfo is deprecated instead of this use ControllerInfo
+    // VEXPORT int CALLBACK GatewayInfo(char *macAddress,char *info,int infoSize);
+    // VEXPORT int CALLBACK ControllerInfo(char *macAddress,char *info,int infoSize);
+    ControllerInfo: ['int', ['pointer', 'pointer', 'int']]
 })
 
 module.exports = vertXLib

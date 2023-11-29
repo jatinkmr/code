@@ -23,6 +23,22 @@ const fetchDllVersion = async (emptyBufferToStoreVersion, sizeOfEmptyBuffer) => 
     }
 }
 
+const hidControllerConnection = async (ipAddress, port) => {
+    try {
+        return await VertXLib.ContactController(ipAddress, port)
+    } catch (error) {
+        console.log(`Error in hidControllerConnection :- ${error}`)
+    }
+}
+
+const fetchControllerInformation = async (macAddress, bufferStorage, bufferStorageSize) => {
+    try {
+        return await VertXLib.ControllerInfo(macAddress, bufferStorage, bufferStorageSize)
+    } catch (error) {
+        console.log(`Error in fetchControllerInformation :- ${error}`)
+    }
+}
+
 const setValidHidControllerGateway = async (controllerMacAddress, controllerMacAddressSize) => {
     try {
         return await VertXLib.SetValidControllers(controllerMacAddress, controllerMacAddressSize)
@@ -52,5 +68,7 @@ module.exports = {
     fetchDllVersion,
     setValidHidControllerGateway,
     fetchValidHidControllerGateway,
-    fetchGetConnectedControllers
+    fetchGetConnectedControllers,
+    hidControllerConnection,
+    fetchControllerInformation
 }
