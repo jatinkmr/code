@@ -15,7 +15,7 @@ const vertXLib = ffi.Library(vertXDefineLibPath, {
     // SetValidGateway is a deprecated function, use SetValidControllers viz updated function
     // VEXPORT int CALLBACK SetValidGateways(char *gateways,int gatewaysSize);
     // VEXPORT int CALLBACK SetValidControllers(char *controllers);
-    SetValidControllers: ['int', ['pointer', 'int']], // Only valid V1000/V2000 Controllers are permitted to connect to the VertX DLL.
+    SetValidControllers: ['int', ['pointer']], // Only valid V1000/V2000 Controllers are permitted to connect to the VertX DLL.
 
     // GetValidGateways is a deprecated function, use GetValidControllers viz updated function
     // VEXPORT int CALLBACK GetValidGateways(char *gateways,int gatewaysSize);
@@ -35,7 +35,12 @@ const vertXLib = ffi.Library(vertXDefineLibPath, {
     // GatewayInfo is deprecated instead of this use ControllerInfo
     // VEXPORT int CALLBACK GatewayInfo(char *macAddress,char *info,int infoSize);
     // VEXPORT int CALLBACK ControllerInfo(char *macAddress,char *info,int infoSize);
-    ControllerInfo: ['int', ['pointer', 'pointer', 'int']]
+    ControllerInfo: ['int', ['pointer', 'pointer', 'int']],
+
+    // RspGatewayInfo is deprecated instead of this use RspControllerInfo
+    // VEXPORT int CALLBACK RspGatewayInfo(int ident,char *macAddress);
+    // VEXPORT int CALLBACK RspControllerInfo(int ident,char *macAddress);
+    RspControllerInfo: ['int', ['int', 'pointer']]
 })
 
 module.exports = vertXLib

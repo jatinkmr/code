@@ -1,3 +1,4 @@
-11/29/2023 15:40:08  logMon Start VertX DLL version 2.4.7
-11/29/2023 15:40:08  seedMon [SeedHashMon::Load] Error opening C:\Users\demo_essi\Downloads\code\10_hid_vertX_DLL\vertx.txt
-11/29/2023 15:40:08  logMon End
+12/02/2023 10:51:20  logMon Start VertX DLL version 2.4.7
+12/02/2023 10:51:20  seedMon [SeedHashMon::Load] Error opening C:\Users\demo_essi\Downloads\code\10_hid_vertX_DLL\vertx.txt
+12/02/2023 10:51:20  0 [Worker::ContactGateway] invalid IP address or host name 
+12/02/2023 10:51:20  logMon End

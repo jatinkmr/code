@@ -39,9 +39,9 @@ const fetchControllerInformation = async (macAddress, bufferStorage, bufferStora
     }
 }
 
-const setValidHidControllerGateway = async (controllerMacAddress, controllerMacAddressSize) => {
+const setValidHidControllerGateway = async (controllerMacAddress) => {
     try {
-        return await VertXLib.SetValidControllers(controllerMacAddress, controllerMacAddressSize)
+        return await VertXLib.SetValidControllers(controllerMacAddress)
     } catch (error) {
         console.log('Error in setValidHidControllerGateway :- ', error)
     }
@@ -63,6 +63,14 @@ const fetchGetConnectedControllers = async (bufferStorage, bufferStorageSize) =>
     }
 }
 
+const fetchRspControllerInformation = async (ident, controllerMacAddress) => {
+    try {
+        return await VertXLib.RspControllerInfo(ident, controllerMacAddress)
+    } catch (error) {
+        console.log(`Error in fetchRspControllerInformation :- ${error}`)
+    }
+}
+
 module.exports = {
     hidVertXConnection,
     fetchDllVersion,
@@ -70,5 +78,6 @@ module.exports = {
     fetchValidHidControllerGateway,
     fetchGetConnectedControllers,
     hidControllerConnection,
-    fetchControllerInformation
+    fetchControllerInformation,
+    fetchRspControllerInformation
 }
