@@ -1,8 +1,19 @@
-1) nodemon
-2) express
-3) body-parser
-4) express-handlebars
-5) socket.io // for signoPad
-6) ws (webSocket) // for signoPad
-7) modbus-serial // for connecting over TCP and UDP Protocols
-8) node-hid // for connecting the bar-code-scanner
+01) nodemon
+02) express
+03) body-parser
+04) express-handlebars
+05) socket.io // for signoPad
+06) ws (webSocket) // for signoPad
+07) modbus-serial // for connecting over TCP and UDP Protocols
+08) node-hid // for connecting the bar-code-scanner
+09) Cluster
+10) dhcp
+12) modbus-serial
+13) ffi-napi
+14) path
+Before using kafkaJS. Please install KafkaJS and do some important things as per this link https://www.youtube.com/watch?v=BwYFuhVhshI&ab_channel=AmpCode
+15) kafkajs (Note: Do not download a source files from appache kafka, download a binary file)
+Download Link :- https://kafka.apache.org/downloads
+to run kafkaJS in windows
+C:\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+C:\kafka>.\bin\windows\kafka-server-start.bat .\config\server.properties
