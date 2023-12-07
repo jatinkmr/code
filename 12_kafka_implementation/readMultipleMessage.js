@@ -58,33 +58,6 @@ const consumeMessage = async () => {
     })
     console.log(`consumer subscribe for the given topic :- ${topic}`)
 
-
-    // A sample of message
-    // message: {
-    //     magicByte: 2,
-    //     attributes: 0,
-    //     timestamp: '1701943018587',
-    //     offset: '206',
-    //     key: <Buffer 6b 65 79 31>,
-    //     value: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>,
-    //     headers: {},
-    //     isControlRecord: false,
-    //     batchContext: {
-    //         firstOffset: '206',
-    //         firstTimestamp: '1701943018587',
-    //         partitionLeaderEpoch: 0,
-    //         inTransaction: false,
-    //         isControlBatch: false,
-    //         lastOffsetDelta: 0,
-    //         producerId: '-1',
-    //         producerEpoch: 0,
-    //         firstSequence: 0,
-    //         maxTimestamp: '1701943018587',
-    //         timestampType: 0,
-    //         magicByte: 2
-    //     }
-    // }
-
     await consumer.run({
         eachMessage: async ({ topic, partition, message }) => {
             console.log({

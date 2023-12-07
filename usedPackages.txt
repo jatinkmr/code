@@ -17,3 +17,29 @@ Download Link :- https://kafka.apache.org/downloads
 to run kafkaJS in windows
 C:\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 C:\kafka>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+sample example of message recv using kafkaJS
+message: {
+    magicByte: 2,
+    attributes: 0,
+    timestamp: '1701943018587',
+    offset: '206',
+    key: <Buffer 6b 65 79 31>,
+    value: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>,
+    headers: {},
+    isControlRecord: false,
+    batchContext: {
+        firstOffset: '206',
+        firstTimestamp: '1701943018587',
+        partitionLeaderEpoch: 0,
+        inTransaction: false,
+        isControlBatch: false,
+        lastOffsetDelta: 0,
+        producerId: '-1',
+        producerEpoch: 0,
+        firstSequence: 0,
+        maxTimestamp: '1701943018587',
+        timestampType: 0,
+        magicByte: 2
+    }
+}
