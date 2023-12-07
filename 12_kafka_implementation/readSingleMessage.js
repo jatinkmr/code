@@ -1,11 +1,8 @@
 const { Kafka } = require('kafkajs')
-const IP = require('ip')
-
-const host = IP.address()
 
 const kafka = new Kafka({
     clientId: 'my-app',
-    brokers: [`${host}:9092`],
+    brokers: [`localhost:9092`],
     connectionTimeout: 3000
 })
 
