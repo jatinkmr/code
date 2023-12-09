@@ -13,7 +13,7 @@ try {
 
     wssConsumer.on('connection', (ws) => {
         ws.on('open', () => {
-            ws.send('Hello, WebSocket Server for Consumer')
+            wssConsumer.send('Hello, WebSocket Server for Consumer')
         })
 
         // Subscribe to Kafka topic

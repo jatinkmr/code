@@ -3,7 +3,7 @@ const WebSocket = require('ws');
 const wsConsumer = new WebSocket('ws://localhost:4000');
 
 wsConsumer.on('open', () => {
-    console.log('Consumer WebSocket connected');
+    console.log('Consumer WebSocket connected at 4000');
 });
 
 wsConsumer.on('message', (message) => {

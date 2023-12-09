@@ -43,3 +43,7 @@ message: {
         magicByte: 2
     }
 }
+
+commands in windows for killing the port process
+netstat -ano|findstr "PID :3000"
+taskkill /pid <PID> /f
