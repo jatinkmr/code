@@ -22,6 +22,7 @@ try {
         // Listen for Kafka messages
         consumer.run({
             eachMessage: async ({ message }) => {
+                console.log(`message :- ${message.value.toString()}`);
                 // Send Kafka message to connected WebSocket clients
                 ws.send(message.value.toString())
             },
