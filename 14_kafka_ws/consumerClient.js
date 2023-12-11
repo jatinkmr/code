@@ -7,7 +7,7 @@ wsConsumer.on('open', () => {
 });
 
 wsConsumer.on('message', (message) => {
-    console.log('Received message from Kafka via WebSocket:', message.toString());
+    console.log('Received message from Producer via KafkaJS & WebSocket:', message.toString());
 });
 
 // Handle WebSocket connection errors
