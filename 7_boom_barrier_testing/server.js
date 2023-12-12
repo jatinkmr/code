@@ -86,9 +86,9 @@ app.post('/api/handleboom-ui', async function (req, res) {
         if ((boomBarrierValue === true) || (boomBarrierValue === false)) {
             let operationFunctionality = boomBarrierValue ? "Open" : "Close"
 
-            if (openingValue) {
+            if (boomBarrierValue) {
                 await Client.writeCoil(openingOutPutAddress, true) // sending opening pulse to 16 index
-            } else if (closingValue) {
+            } else if (!boomBarrierValue) {
                 await Client.writeCoil(closingOutPutAddress, true) // sending closing pulse to 17 index
             }
 
