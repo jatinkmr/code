@@ -12,10 +12,11 @@ class KafkaConfig {
 
 	async produce(topic, messages) {
 		try {
+			console.log(`topic :- ${topic} and message :- ${messages}`);
 			await this.producer.connect();
 			await this.producer.send({
-				topic: topic,
-				messages: messages,
+				topic,
+				messages
 			});
 		} catch (error) {
 			console.error(error);

@@ -5,27 +5,14 @@ const fs = require('fs')
 const sendVideoFromDrive = async (req, res) => {
     try {
         const { message } = req.body
-        // const videoStream = fs.createReadStream('./random.mp4');
-        console.log(`videoStream :- ${JSON.stringify(videoStream)}`)
+        const videoStream = fs.readFileSync('./random.mp4');
         const kafkaConfig = new KafkaConfig()
-        ffmpeg()
-            .input(videoStream)
-            .inputFormat('mp4')
-            .inputFPS(30)
-            .on('data', (chunk) => {
-                console.log('chunk')
-                // Send video frames to Kafka topic
-                let data = [{
-                    topic: 'video-topic',
-                    messages: [{ value: chunk }],
-                }]
 
-                kafkaConfig.produce('my-video', data)
-            })
-            .on('end', () => {
-                console.log('Video processing finished.');
-                producer.disconnect();
-            })
+        let data = [{
+            value: videoStream
+        }]
+
+        await kafkaConfig.produce('video-topic', data)
 
         res.status(200).json({
             message

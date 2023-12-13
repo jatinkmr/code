@@ -5,7 +5,13 @@ const { KafkaConfig } = require('./kafkaConfig')
 
 const app = express()
 
-app.use(bodyParser.json())
+// Set the maximum size limit to 10MB (adjust as needed)
+const maxSize = '10mb';
+
+// Use bodyParser middleware with size limit
+app.use(bodyParser.json({ limit: maxSize }));
+app.use(bodyParser.urlencoded({ limit: maxSize, extended: true }));
+
 app.post('/api/send-vid', sendVideoFromDrive)
 
 app.listen(8080, () => {

@@ -2,9 +2,12 @@ import express from "express";
 import bodyParser from "body-parser";
 import constrollers from "./controller.js";
 import KafkaConfig from "./config.js";
+import responseTime from './response_time.js'
 
 const app = express();
 const jsonParser = bodyParser.json();
+
+app.use(responseTime)
 
 app.post("/api/send", jsonParser, constrollers.sendMessageToKafka);
 
