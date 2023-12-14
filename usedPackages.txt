@@ -18,6 +18,11 @@ to run kafkaJS in windows
 C:\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 C:\kafka>.\bin\windows\kafka-server-start.bat .\config\server.properties
 
+added these lines to server.properties in kafka for increasing the request data size(s). kafka service to increase the message size to ~25MB.
+max.request.size=200000000
+message.max.bytes=200000000
+max.partition.fetch.bytes=200000000
+
 sample example of message recv using kafkaJS
 message: {
     magicByte: 2,
