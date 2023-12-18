@@ -90,17 +90,17 @@ async function hidControllerFunction() {
         }
 
         // fetching controller info
-        console.log('== == Fetching Controller Info == ==')
-        let macAddressBuffer = Buffer.from('00:06:8E:02:51:3F', 'utf8')
-        let controllerInfoBuffer = Buffer.alloc(256)
-        let controllerInfoResp = await fetchControllerInformation(macAddressBuffer, controllerInfoBuffer, controllerInfoBuffer.length)
-        console.log('controllerInfoResp :- ', controllerInfoResp)
-        if (controllerInfoResp === 0) {
-            console.log(`Controller Information Fetched Successfully. Info :- ${controllerInfoBuffer}`)
-        } else {
-            onError(controllerInfoResp)
-            console.log('Unable to Fetch the Controller Info')
-        }
+        // console.log('== == Fetching Controller Info == ==')
+        // let macAddressBuffer = Buffer.from('00:06:8E:02:51:3F', 'utf8')
+        // let controllerInfoBuffer = Buffer.alloc(256)
+        // let controllerInfoResp = await fetchControllerInformation(macAddressBuffer, controllerInfoBuffer, controllerInfoBuffer.length)
+        // console.log('controllerInfoResp :- ', controllerInfoResp)
+        // if (controllerInfoResp === 0) {
+        //     console.log(`Controller Information Fetched Successfully. Info :- ${controllerInfoBuffer}`)
+        // } else {
+        //     onError(controllerInfoResp)
+        //     console.log('Unable to Fetch the Controller Info')
+        // }
 
         // fetching connected controllers using fetchRspControllerInformation
         // console.log('== == fetching connected controllers using fetchRspControllerInformation == ==')
