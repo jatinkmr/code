@@ -1,4 +1,5 @@
-12/02/2023 10:51:20  logMon Start VertX DLL version 2.4.7
-12/02/2023 10:51:20  seedMon [SeedHashMon::Load] Error opening C:\Users\demo_essi\Downloads\code\10_hid_vertX_DLL\vertx.txt
-12/02/2023 10:51:20  0 [Worker::ContactGateway] invalid IP address or host name 
-12/02/2023 10:51:20  logMon End
+12/18/2023 16:04:01  logMon Start VertX DLL version 2.4.7
+12/18/2023 16:04:01  seedMon [SeedHashMon::Load] Error opening C:\Users\demo_essi\Downloads\code\10_hid_vertX_DLL\vertx.txt
+12/18/2023 16:04:01  0 [Worker::Run] Error on FD_CLOSE
+                        Winsock 10053: Software caused connection abort
+12/18/2023 16:04:01  logMon End

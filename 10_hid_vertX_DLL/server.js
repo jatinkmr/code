@@ -7,7 +7,7 @@ function onError(errorCode) {
     } else if (Math.abs(errorCode) === 10002) {
         console.log('Invalid Parameter. Please check the IPAddress and Port before making the Connection!')
     } else if (Math.abs(errorCode) === 10003) {
-        console.log('Gateway Not Connected!')
+        console.log('Not Connected!')
     } else if (Math.abs(errorCode) === 10004) {
         console.log('Gateway not Valid!')
     } else if (Math.abs(errorCode) === 10006) {
@@ -33,8 +33,8 @@ async function hidControllerFunction() {
 
     // making connection with HidController
     console.log('== == Making Connection with HidController == ==')
-    let ipAddress = '192.168.0.231'
-    let ipAddressBuffer = Buffer.from('192.168.0.231', 'utf8')
+    let ipAddress = '192.168.0.202'
+    let ipAddressBuffer = Buffer.from('192.168.0.202', 'utf8')
     // let ipAddress = Buffer.from('169.254.242.121') // default IP Address of HID VertX V1000 Controller
     let port = 4050
     console.log(`Try to Connect HID Device over :- ${ipAddress}:${port}`)
@@ -49,7 +49,7 @@ async function hidControllerFunction() {
         let arrayOfMacAddress = ['00:06:8E:02:51:3F']
         const currentMacAddressBuffer = Buffer.concat(arrayOfMacAddress.map(str => Buffer.from(str)));
         // let currentMacAddressBuffer = Buffer.from(`00:06:8E:02:51:3F`, 'utf8')
-        // let currentMacAddressBuffer = Buffer.from('192.168.0.231', 'utf8')
+        // let currentMacAddressBuffer = Buffer.from('192.168.0.202', 'utf8')
         // console.log('Buffer of currentMacAddressBuffer :- ', currentMacAddressBuffer)
         // console.log(`currentMacAddressBuffer :- ${currentMacAddressBuffer}`)
         let isValidHidControllerResp = await setValidHidControllerGateway(currentMacAddressBuffer)
@@ -57,13 +57,13 @@ async function hidControllerFunction() {
             console.log('given MAC Address/Gateway has been successfully set')
         } else {
             onError(isValidHidControllerResp)
-            console.log('getting an Error while setting HidControllerGateway')
+            console.log('gettifng an Error while setting HidControllerGateway')
         }
 
         console.log('== == getting mac address == ==')
-        // let fetchMacAddress = Buffer.alloc(21)
-        const buffer = new ArrayBuffer(8);
-        const fetchMacAddress = new Int32Array(buffer);
+        let fetchMacAddress = Buffer.alloc(21)
+        // const buffer = new ArrayBuffer(8);
+        // const fetchMacAddress = new Int32Array(buffer);
         // console.log(`fetchMacAddress :- ${Buffer.byteLength(fetchMacAddress)}`)
         if (fetchMacAddress) {
             let fetchMacAddressResponse = await fetchValidHidControllerGateway(fetchMacAddress, fetchMacAddress.length)
@@ -74,19 +74,6 @@ async function hidControllerFunction() {
                 onError(fetchMacAddressResponse)
                 console.log('unable to fetch the mac address from GetValidGateways')
             }
-        }
-
-        // fetching controller info
-        console.log('== == Fetching Controller Info == ==')
-        let macAddressBuffer = Buffer.from('00:06:8E:02:51:3F', 'utf8')
-        let controllerInfoBuffer = Buffer.alloc(256)
-        let controllerInfoResp = await fetchControllerInformation(macAddressBuffer, controllerInfoBuffer, controllerInfoBuffer.length)
-        console.log('controllerInfoResp :- ', controllerInfoResp)
-        if (controllerInfoResp === 0) {
-            console.log(`Controller Information Fetched Successfully. Info :- ${controllerInfoBuffer}`)
-        } else {
-            onError(controllerInfoResp)
-            console.log('Unable to Fetch the Controller Info')
         }
 
         // fetching connecting controllers
@@ -100,6 +87,19 @@ async function hidControllerFunction() {
         } else {
             onError(connectedControllerResponse)
             console.log('Unable to Fetch the Connected controllers from GetConnectedControllers')
+        }
+
+        // fetching controller info
+        console.log('== == Fetching Controller Info == ==')
+        let macAddressBuffer = Buffer.from('00:06:8E:02:51:3F', 'utf8')
+        let controllerInfoBuffer = Buffer.alloc(256)
+        let controllerInfoResp = await fetchControllerInformation(macAddressBuffer, controllerInfoBuffer, controllerInfoBuffer.length)
+        console.log('controllerInfoResp :- ', controllerInfoResp)
+        if (controllerInfoResp === 0) {
+            console.log(`Controller Information Fetched Successfully. Info :- ${controllerInfoBuffer}`)
+        } else {
+            onError(controllerInfoResp)
+            console.log('Unable to Fetch the Controller Info')
         }
 
         // fetching connected controllers using fetchRspControllerInformation
