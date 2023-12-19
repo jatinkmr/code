@@ -25,18 +25,18 @@ $Source: /opt/cvs/gateway/vertxwin/vertxdll/VertX.h,v $
 #define VEXPORT extern "C" __declspec(dllexport)
 
 VEXPORT int CALLBACK AddModCardRecord2(char *macAddress,int cardSetID,int noFormat,
-									 char *cardNumber,char *pin,int accessType,
-									 unsigned int uniqueID,int accessGroup1,
-									 int accessGroup2,int accessGroup3,
-									 int accessGroup4,int accessGroup5,
-									 int accessGroup6,int accessGroup7,
-									 int accessGroup8,int extendedAccess,
-									 int passbackExempt,int pinCmds,
-									 char *startDate,char *startTime,
-									 char *endDate,char *endTime,
-									 unsigned int escortID,
-									 int inScheduleElevatorGroup,
-									 int outScheduleElevatorGroup,int pinExempt);
+									char *cardNumber,char *pin,int accessType,
+									unsigned int uniqueID,int accessGroup1,
+									int accessGroup2,int accessGroup3,
+									int accessGroup4,int accessGroup5,
+									int accessGroup6,int accessGroup7,
+									int accessGroup8,int extendedAccess,
+									int passbackExempt,int pinCmds,
+									char *startDate,char *startTime,
+									char *endDate,char *endTime,
+									unsigned int escortID,
+									int inScheduleElevatorGroup,
+									int outScheduleElevatorGroup,int pinExempt);
 
 VEXPORT int CALLBACK AlarmLogSize(int mode,int *logSize);
 
@@ -166,7 +166,7 @@ VEXPORT int CALLBACK GetNumberResponse(int *numberResponse);
 VEXPORT int CALLBACK GetNumberSmartCardData(int *numberSmartCardData);
 
 VEXPORT int CALLBACK GetSavedOutputs(char *macAddress,int interfaceNumber,char *savedOutputs,
-									 int savedOutputsSize);
+									int savedOutputsSize);
 
 VEXPORT int CALLBACK GetTimeDate(char *macAddress,char *systemDate,int systemDateSize,
 								 char *systemTime,int systemTimeSize);
